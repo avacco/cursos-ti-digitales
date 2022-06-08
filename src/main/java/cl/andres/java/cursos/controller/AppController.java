@@ -21,17 +21,14 @@ import cl.andres.java.cursos.model.Curso;
 import cl.andres.java.cursos.model.Estudiante;
 import cl.andres.java.cursos.repository.AdministradorRepository;
 import cl.andres.java.cursos.repository.CursoRepository;
-import cl.andres.java.cursos.repository.EstudianteRepository;
+import cl.andres.java.cursos.service.UsuarioService;
 
 @Controller
 @RequestMapping("/")
 public class AppController {
 
 	@Autowired
-	AdministradorRepository administradorRepository;
-	
-	@Autowired
-	EstudianteRepository estudianteRepository;
+	UsuarioService usuarioService;
 	
 	@Autowired
 	CursoRepository cursoRepository;
@@ -63,7 +60,7 @@ public class AppController {
 	public String procesarRegistro(@Valid Estudiante estudiante, BindingResult validacion) {
 		if(validacion.hasErrors()) return "registro";
 		
-		estudianteRepository.saveAndFlush(estudiante);
+		usuarioService.crearUsuario(estudiante);
 		return "redirect:/";
 	}
 	
