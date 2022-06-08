@@ -1,12 +1,15 @@
 package cl.andres.java.cursos.model;
 
 import java.time.LocalDate;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,4 +38,6 @@ public class Curso {
 	private String descripcion;
 	private byte[] imagen;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Estudiante> estudiantes;
 }

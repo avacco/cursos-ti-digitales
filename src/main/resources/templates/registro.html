@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head data-th-replace="parts/head :: cabecera(~{::title}, _)">
+		<meta charset="UTF-8">
+		<title>Inicio</title>
+	</head>
+<body class="bg-light">
+	<nav data-th-replace="parts/menu :: menu"></nav>
+
+	<main class="container"><br/>
+		<h1 class="border-bottom pb-2 mb-0"> Registro</h1>
+		<div class="my-3 p-3 bg-body rounded shadow-sm">
+			<form data-th-action="@{/registro}" data-th-object="${estudiante}" enctype="multipart/form-data" method="POST">
+				<label class="form-label"> Primer Nombre:</label> 
+					<input class="form-control" type="text" data-th-field="*{nombre1}" />	
+					
+				<label class="form-label"> Segundo Nombre:</label> 
+					<input class="form-control" type="text" data-th-field="*{nombre2}" />	
+					
+				<label class="form-label"> Apellido Paterno:</label> 
+					<input class="form-control" type="text" data-th-field="*{apellidoPaterno}" />	
+					
+				<label class="form-label"> Apellido Materno:</label> 
+					<input class="form-control" type="text" data-th-field="*{apellidoMaterno}" />	
+
+				<label class="form-label"> RUT:</label> 
+					<input class="form-control" type="text" data-th-field="*{rut}" />	
+
+				<label class="form-label"> Correo electronico:</label> 
+					<input class="form-control" type="text" data-th-field="*{email}" />	
+				
+				<label class="form-label"> Contraseña:</label> 
+					<input class="form-control" type="password" data-th-field="*{password}" />	
+				
+				<label class="form-label"> Telefono:</label> 
+					<input class="form-control" type="text" data-th-field="*{telefono}" />	
+
+				<label class="form-label"> Direccion:</label> 
+					<input class="form-control" type="text" data-th-field="*{direccion}" />	
+
+				<label class="form-label"> Region:</label> 
+					<input class="form-control" type="text" data-th-field="*{region}" />	
+<!-- 					<select id="regiones" class="form-control" data-th-field="*{region}"></select>  -->
+
+				<label class="form-label"> Comuna:</label> 
+					<input class="form-control" type="text" data-th-field="*{comuna}" />					
+<!-- 					<select id="comunas" class="form-control" data-th-field="*{comuna}"></select>  -->
+				
+					<br/>
+						
+				<input type="hidden" data-th-field="*{id}" />
+				<button class="btn btn-primary" type="submit">Guardar</button> 	<a class="btn btn-danger" data-th-href="@{/}">Volver</a>
+			</form>
+		</div>
+
+	</main>
+
+	<div data-th-replace="parts/scripts :: scripts"></div>
+</body>
+</html>

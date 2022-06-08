@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head data-th-replace="parts/head :: cabecera(~{::title}, _)">
-<meta charset="UTF-8">
-<title>Panel de Administracion</title>
-</head>
-<body>
+	<head data-th-replace="parts/head :: cabecera(~{::title}, _)">
+		<meta charset="UTF-8">
+		<title>Panel de Administracion</title>
+	</head>
+<body class="body-light">
 <nav data-th-replace="parts/menu :: menu"></nav>
-<h1>Panel de Adminsitracion</h1>
-<div data-th-replace="parts/scripts :: scripts"></div>
+	<main class="container">
+		<h1 class="border-bottom pb-2 mb-0" > Cursos</h1>
+			<div class="my-3 p-3 bg-body rounded shadow-sm">
+			<a class="btn btn-primary" data-th-href="@{/admin/nuevocurso}">Nuevo curso</a><br/><br/>
+			  	<table id="sortTable" class="table">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Inicio</th>
+						<th>Fin</th>
+						<th>Cupos</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr  data-th-each="curso : ${cursos}">
+						<td data-th-text="${curso.nombre}"></td>
+						<td data-th-text="${curso.fechaInicio}"></td>
+						<td data-th-text="${curso.fechaFin}"></td>
+						<td data-th-text="${curso.cupos}"></td>
+						<td>
+							<a data-th-href="@{/admin/editar/{id}(id=${curso.id})}">Editar</a>
+							<a data-th-href="@{/admin/eliminar/{id}(id=${curso.id})}">Eliminar</a>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+	
+	<div class="my-3 p-3 bg-body rounded shadow-sm">
+		<a class="btn btn-primary" data-th-href="@{/}">Volver</a>
+	</div>
+	</main>
+	
+	<div data-th-replace="parts/scripts :: scripts"></div>
+	<div data-th-replace="parts/tablesort :: tablesort"></div>
 </body>
 </html>

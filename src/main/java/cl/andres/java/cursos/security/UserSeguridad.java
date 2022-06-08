@@ -8,7 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import cl.andres.java.cursos.model.Administrador;
-import cl.andres.java.cursos.model.Usuario;
+import cl.andres.java.cursos.model.Estudiante;
 
 public class UserSeguridad implements UserDetails {
 
@@ -16,29 +16,29 @@ public class UserSeguridad implements UserDetails {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Usuario usuario;
+	private Estudiante estudiante;
 	private Administrador administrador;
 	
-	public UserSeguridad(Usuario usuario, Administrador administrador) { this.usuario = usuario; this.administrador = administrador; }
+	public UserSeguridad(Estudiante estudiante, Administrador administrador) { this.estudiante = estudiante; this.administrador = administrador; }
 	
 
 	@Override
 	public String getUsername() {
-		if(usuario != null) return usuario.getRut();
+		if(estudiante != null) return estudiante.getRut();
 		if(administrador != null) return administrador.getUsername();
 		return null;
 	}
 
 	@Override
 	public String getPassword() {
-		if(usuario != null) return usuario.getPassword();
+		if(estudiante != null) return estudiante.getPassword();
 		if(administrador != null) return administrador.getPassword();
 		return null;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		if(usuario != null) return List.of(new SimpleGrantedAuthority("ESTUDIANTE"));
+		if(estudiante != null) return List.of(new SimpleGrantedAuthority("ESTUDIANTE"));
 		if(administrador != null) return List.of(new SimpleGrantedAuthority("ADMINISTRADOR"));
 		return null;
 	}
@@ -68,8 +68,8 @@ public class UserSeguridad implements UserDetails {
 	}
 
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Estudiante getUsuario() {
+		return estudiante;
 	}
 
 

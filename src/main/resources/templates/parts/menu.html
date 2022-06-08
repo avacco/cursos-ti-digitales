@@ -15,25 +15,26 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" data-th-href="@{/}">Inicio</a>
         </li>
-        <li class="nav-item dropdown"  > <!--  data-sec-authorize="hasAuthority('USER')" -->
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-sec-authorize="isAuthenticated()">
-            Empresa
+        <li class="nav-item dropdown"  >
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-sec-authorize="hasAuthority('ADMINISTRADOR')">
+            Administracion
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" data-th-href="@{/empresa/registro}" data-sec-authorize="hasAuthority('EMPRESA')">Registro</a></li>
-            <li><a class="dropdown-item" data-th-href="@{/empresa/panel}">Panel</a></li>
-            <li><a class="dropdown-item" data-th-href="@{/aviso/crear}">Avisos</a></li>
+            <li><a class="dropdown-item" data-th-href="@{/admin/index}">Panel</a></li>
+            <li><a class="dropdown-item" data-th-href="@{/admin/nuevocurso}">Añadir nuevo curso</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown"  > <!-- data-sec-authorize="hasAuthority('ADMIN')" -->
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-sec-authorize="isAuthenticated()">
-            Postulante
+        <li class="nav-item dropdown"  > 
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-sec-authorize="hasAuthority('ESTUDIANTE')">
+            Estudiante
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" data-th-href="@{/postulante/registro}" data-sec-authorize="hasAuthority('POSTULANTE')">Registro</a></li>
-            <li><a class="dropdown-item" data-th-href="@{/postulante/panel}">Panel</a></li>
-            <li><a class="dropdown-item" data-th-href="@{/aviso/crear}">Avisos</a></li>
+            <li><a class="dropdown-item" data-th-href="@{/estudiante/index}">Panel</a></li>
+            <li><a class="dropdown-item" data-th-href="@{/}">Cursos</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-sec-authorize="!isAuthenticated()" data-th-href="@{/registro}">Registrarme</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-sec-authorize="!isAuthenticated()" data-th-href="@{/login}">Ingresar</a>

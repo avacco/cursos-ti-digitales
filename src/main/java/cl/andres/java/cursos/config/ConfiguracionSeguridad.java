@@ -24,6 +24,10 @@ public class ConfiguracionSeguridad {
 		http
 			.authorizeHttpRequests(authorize -> authorize
 										.mvcMatchers("/").permitAll()
+										.mvcMatchers("/registro").permitAll()
+										.mvcMatchers("/admin/index").hasAuthority("ADMINISTRADOR")
+										.mvcMatchers("/admin/nuevocurso").hasAuthority("ADMINISTRADOR")
+										.mvcMatchers("/estudiante/ìndex").hasAuthority("ESTUDIANTE")
 										.anyRequest().authenticated()
 			)
 			.formLogin(form -> form
@@ -42,6 +46,6 @@ public class ConfiguracionSeguridad {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() { 
 		// ignora los requisitos de seguridad para las siguientes carpetas y sus archivos  
-		return (web) -> web.ignoring().antMatchers("/img/**","/css/**","/js/**");
+		return (web) -> web.ignoring().antMatchers("/imagen/**","/css/**","/js/**");
 	}
 }

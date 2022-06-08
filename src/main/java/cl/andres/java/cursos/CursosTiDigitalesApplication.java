@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import cl.andres.java.cursos.model.Administrador;
-import cl.andres.java.cursos.model.Usuario;
+import cl.andres.java.cursos.model.Estudiante;
 import cl.andres.java.cursos.service.AdministradorService;
 import cl.andres.java.cursos.service.UsuarioService;
 
@@ -30,7 +30,7 @@ public class CursosTiDigitalesApplication {
 			}
 			
 			if(uService.contarUsuarios() == 0) {
-				Usuario usuario = Usuario.builder()
+				Estudiante estudiante = Estudiante.builder()
 											.nombre1("Pedro")
 											.nombre2("Pablo")
 											.apellidoPaterno("Bucaretti")
@@ -41,9 +41,11 @@ public class CursosTiDigitalesApplication {
 											.email("correo@dominio.com")
 											.rut("12345678-9")
 											.password("1234")
+											.region("No disponible")
+											.comuna("No disponible")
 											.build()
 									;
-				uService.crearUsuario(usuario);
+				uService.crearUsuario(estudiante);
 			}
 		};
 	}
