@@ -12,4 +12,10 @@ public class EstudianteController {
 	public String panelEstudiante() {
 		return "estudiante/panel";
 	}
+	
+	@GetMapping("/postular")
+	public String postular() {
+		
+		return "redirect:/";
+	}
 }

@@ -7,20 +7,21 @@
 	</head>
 <body class="bg-light bg-gradient" style="padding-bottom: 350px;">
 	<div data-th-replace="parts/menu :: menu"></div>
-	
+	<br/>
 	<h1 align="center">Cursos disponibles</h1>
 	
-	<div class="my-3 p-3 bg-body rounded shadow-sm">
-		<div class="row">
-			<div class="col-12 col-sm-10 col-md-5 col-lg-4 col-xl-4 col-xxl-3" data-th-each="curso : ${cursos}">
+	<div class="my-3 p-3 bg-body rounded shadow-sm d-flex justify-content-center">
+		<div class="row container">
+			<div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4 col-xxl-4" data-th-each="curso : ${cursos}">
 				<div class="card-header border"><p class="card-text" data-th-text="${curso.nombre}"></p></div>
 				<div class="card text-dark bg-light mb-3">
 				  <img data-th-src="@{/imagen/{id}(id=${curso.id})}" class="card-img-middle" height="300" style="margin:30px;">
 				  <div class="card-body" align="center">
 				    <h2 class="card-title" data-th-text="${curso.nombre}"></h2>
 				    <p class="card-text" data-th-text="${curso.descripcion}"></p>
-				    <a class="btn btn-primary" data-th-href="@{/producto/editar/{id}(id=${curso.id})}">Postular</a>
-				    <a class="btn btn-primary" data-th-href="@{/producto/eliminar/{id}(id=${curso.id})}">Detalles</a>
+				    <a class="btn btn-primary bg-gradient" data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-href="@{/estudiante/postular/{id}(id=${#authentication.getPrincipal().getUsuario().getId()})}">Postular</a>
+				    <a class="btn btn-primary bg-gradient" data-th-href="@{/ingreso}">Postular</a>
+				    <a class="btn btn-primary bg-gradient" data-th-href="@{/producto/eliminar/{id}(id=${curso.id})}">Detalles</a>
 				  </div>
 				</div><br/>
 			</div>
