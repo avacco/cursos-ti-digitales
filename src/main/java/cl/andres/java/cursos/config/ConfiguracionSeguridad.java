@@ -46,6 +46,6 @@ public class ConfiguracionSeguridad {
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() { 
 		// ignora los requisitos de seguridad para las siguientes carpetas y sus archivos  
-		return (web) -> web.ignoring().antMatchers("/imagen/**","/css/**","/js/**");
+		return (web) -> web.ignoring().antMatchers("/img/**","/imagen/**","/css/**","/js/**");
 	}
 }

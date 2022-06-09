@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cl.andres.java.cursos.model.Curso;
 import cl.andres.java.cursos.model.Estudiante;
-import cl.andres.java.cursos.repository.AdministradorRepository;
 import cl.andres.java.cursos.repository.CursoRepository;
 import cl.andres.java.cursos.service.UsuarioService;
 

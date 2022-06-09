@@ -4,9 +4,13 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" data-th-fragment="menu" >
+<div data-th-fragment="menu">
+<nav class="navbar navbar-expand-lg">
+	<img alt="icon" data-th-src="@{/img/icon.ico}" height="75" width="75"><h1 class="">Cursos TI Digitales</h1>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient" data-th-fragment="menu" >
   <div class="container-fluid">
-    <a class="navbar-brand" data-th-href="@{/}">Bienvenido <span data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-text="${#authentication.getPrincipal().getUsuario().getNombre1()}"></span> <span data-sec-authorize="!isAuthenticated()">invitado</span></a>
+    <a class="navbar-brand" data-th-href="@{/}">Bienvenido <span data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-text="${#authentication.getPrincipal().getUsuario().getNombre1()}"></span><span data-sec-authorize="hasAuthority('ADMINISTRADOR')" data-th-text="${#authentication.getPrincipal().getAdministrador().getUsername()}"></span> <span data-sec-authorize="!isAuthenticated()">invitado</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,5 +51,6 @@
     </div>
   </div>
 </nav>
+</div>
 </body>
 </html>

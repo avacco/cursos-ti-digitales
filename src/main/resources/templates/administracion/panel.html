@@ -10,7 +10,7 @@
 	<main class="container">
 		<h1 class="border-bottom pb-2 mb-0" > Cursos</h1>
 			<div class="my-3 p-3 bg-body rounded shadow-sm">
-			<a class="btn btn-primary" data-th-href="@{/admin/nuevocurso}">Nuevo curso</a><br/><br/>
+			<a class="btn btn-primary bg-gradient" data-th-href="@{/admin/nuevocurso}">Nuevo curso</a><br/><br/>
 			  	<table id="sortTable" class="table">
 				<thead>
 					<tr>
@@ -37,11 +37,12 @@
 			</div>
 	
 	<div class="my-3 p-3 bg-body rounded shadow-sm">
-		<a class="btn btn-primary" data-th-href="@{/}">Volver</a>
+		<a class="btn btn-primary bg-gradient" data-th-href="@{/}">Volver</a>
 	</div>
 	</main>
 	
 	<div data-th-replace="parts/scripts :: scripts"></div>
+	<div data-th-replace="parts/footer :: footer"></div>
 	<div data-th-replace="parts/tablesort :: tablesort"></div>
 </body>
 </html>

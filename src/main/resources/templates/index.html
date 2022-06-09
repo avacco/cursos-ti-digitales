@@ -5,10 +5,10 @@
 		<meta charset="UTF-8">
 		<title>Inicio</title>
 	</head>
-<body class="bg-light">
-	<nav data-th-replace="parts/menu :: menu"></nav>
+<body class="bg-light bg-gradient" style="padding-bottom: 350px;">
+	<div data-th-replace="parts/menu :: menu"></div>
 	
-	<h1>Inicio</h1>
+	<h1 align="center">Cursos disponibles</h1>
 	
 	<div class="my-3 p-3 bg-body rounded shadow-sm">
 		<div class="row">
@@ -24,9 +24,19 @@
 				  </div>
 				</div><br/>
 			</div>
+			
+		<div class="col-12 col-sm-10 col-md-5 col-lg-4 col-xl-4 col-xxl-3" data-th-if="${cursos.empty}"></div>
+			<div class="container text-center my-5 py-5">
+				<img data-th-if="${cursos.empty}" alt="empty" data-th-src="@{/img/empty.png}" height="150" width="150"><br/>
+				<span data-th-if="${cursos.empty}"> No hay cursos disponibles </span>
+			</div>
 		</div>
 	</div>  
 	
 	<div data-th-replace="parts/scripts :: scripts"></div>
+	<div data-th-replace="parts/footer :: footer"></div>
+	
+
+	
 </body>
 </html>
