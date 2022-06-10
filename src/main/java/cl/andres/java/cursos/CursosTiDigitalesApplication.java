@@ -56,7 +56,6 @@ public class CursosTiDigitalesApplication {
 				uService.crearUsuario(estudiante);
 			}
 			if(cRepo.count() == 0) {
-				System.err.println(FileSystems.getDefault());
 				Curso cursoJava = Curso.builder()
 										.nombre("Fundamentos de Programacion en Java")
 										.fechaInicio(LocalDate.of(2023, 3, 3))
