@@ -1,12 +1,20 @@
 package cl.andres.java.cursos;
 
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import cl.andres.java.cursos.model.Administrador;
+import cl.andres.java.cursos.model.Curso;
 import cl.andres.java.cursos.model.Estudiante;
+import cl.andres.java.cursos.repository.CursoRepository;
 import cl.andres.java.cursos.service.AdministradorService;
 import cl.andres.java.cursos.service.UsuarioService;
 
@@ -18,7 +26,7 @@ public class CursosTiDigitalesApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner datosIniciales(AdministradorService aService, UsuarioService uService) {
+	public CommandLineRunner datosIniciales(AdministradorService aService, UsuarioService uService, CursoRepository cRepo) {
 		return args -> {
 			if(aService.contarAdmin() == 0) {
 				Administrador admin = Administrador.builder()
@@ -46,6 +54,36 @@ public class CursosTiDigitalesApplication {
 											.build()
 									;
 				uService.crearUsuario(estudiante);
+			}
+			if(cRepo.count() == 0) {
+				System.err.println(FileSystems.getDefault());
+				Curso cursoJava = Curso.builder()
+										.nombre("Fundamentos de Programacion en Java")
+										.fechaInicio(LocalDate.of(2023, 3, 3))
+										.fechaFin(LocalDate.of(2023, 12, 20))
+										.cupos(30)
+										.descripcion("Curso de fundamentos de programación con Java. Se enseñará los fundamentos básicos, primero creando aplicaciones por consola, para pasar luego a aplicaciones con interfaces de usuario.")
+										.imagen(Files.readAllBytes(Paths.get("src/main/resources/static/img/java.jpg")))
+										.build();
+				Curso cursoSpring = Curso.builder()
+										.nombre("Fundamentos de Programacion en Java")
+										.fechaInicio(LocalDate.of(2023, 3, 3))
+										.fechaFin(LocalDate.of(2023, 12, 20))
+										.cupos(30)
+										.descripcion("Desarrollo web con Spring Framework, una plataforma Java de código abierto que proporciona un soporte integral de infraestructura para desarrollar aplicaciones Java robustas de manera muy fácil y rápida.")
+										.imagen(Files.readAllBytes(Paths.get("src/main/resources/static/img/spring.jpg")))
+										.build();
+				Curso cursoOracle = Curso.builder()
+										.nombre("Fundamentos de Programacion en Java")
+										.fechaInicio(LocalDate.of(2023, 3, 3))
+										.fechaFin(LocalDate.of(2023, 12, 20))
+										.cupos(30)
+										.descripcion("Curso donde se enseñará la creación, y mantención de bases de datos relacionales utilizando el lenguaje SQL y los servicios de Oracle.")
+										.imagen(Files.readAllBytes(Paths.get("src/main/resources/static/img/oracle.jpg")))
+										.build();
+				cRepo.save(cursoJava);
+				cRepo.save(cursoSpring);
+				cRepo.saveAndFlush(cursoOracle);
 			}
 		};
 	}
