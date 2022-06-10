@@ -13,7 +13,16 @@
 				aaaaaaaaaaaa
 		</div>
 		<div class="col-md-6">
-			  aaaaaaaaaaaa
+			  <div class="col-6" data-th-if="${estudiante.curso != null}">
+				<div class="card-header border"><p class="card-text" data-th-text="${estudiante.curso.nombre}"></p></div>
+				<div class="card text-dark bg-light mb-3">
+				  <img data-th-src="@{/imagen/{id}(id=${estudiante.curso.id})}" class="card-img-middle" height="300" style="margin:30px;">
+				  <div class="card-body" align="center">
+				    <h2 class="card-title" data-th-text="${estudiante.curso.nombre}"></h2>
+				    <p class="card-text" data-th-text="${estudiante.curso.descripcion}"></p>
+				  </div>
+				</div><br/>
+			</div>
 		</div>
 	</div>
 	

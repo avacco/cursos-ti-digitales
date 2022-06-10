@@ -19,8 +19,8 @@
 				  <div class="card-body" align="center">
 				    <h2 class="card-title" data-th-text="${curso.nombre}"></h2>
 				    <p class="card-text" data-th-text="${curso.descripcion}"></p>
-				    <a class="btn btn-primary bg-gradient" data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-href="@{/estudiante/postular/{id}(id=${#authentication.getPrincipal().getUsuario().getId()})}">Postular</a>
-				    <a class="btn btn-primary bg-gradient" data-th-href="@{/ingreso}">Postular</a>
+				    <a class="btn btn-primary bg-gradient" data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-href="@{/estudiante/postular/{id}/{cursoId} (id=${#authentication.getPrincipal().getUsuario().getId()},cursoId=${curso.id})}">Postular</a>
+				    <a class="btn btn-primary bg-gradient" data-sec-authorize="!isAuthenticated()" data-th-href="@{/ingreso}">Postular</a>
 				    <a class="btn btn-primary bg-gradient" data-th-href="@{/producto/eliminar/{id}(id=${curso.id})}">Detalles</a>
 				  </div>
 				</div><br/>

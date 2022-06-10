@@ -73,7 +73,6 @@ public class AppController {
 	
 	@GetMapping("/ingreso")
 	public String login() {
-		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth == null || auth instanceof AnonymousAuthenticationToken) {
             return "ingreso";
