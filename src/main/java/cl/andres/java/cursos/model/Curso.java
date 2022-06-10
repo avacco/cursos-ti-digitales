@@ -3,18 +3,22 @@ package cl.andres.java.cursos.model;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,38 +36,42 @@ public class Curso {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotNull
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 50, message = "El nombre del curso debe tener entre 1 y 50 caracteres")
 	@Column(nullable = false)
 	private String nombre;
 	
-	@NotNull
-	@Future
+	@NotNull(message = "Debe existir una fecha de inicio")
+	@Future(message = "La fecha de inicio debe ser superior al presente")
 	@Column(nullable = false)
 	private LocalDate fechaInicio;
 	
-	@NotNull
-	@Future
+	@NotNull(message = "Debe existir una fecha de finalizacion")
+	@Future(message = "La fecha de finalizacion debe ser superior al presente")
 	@Column(nullable = false)
 	private LocalDate fechaFin;
 	
-	@NotNull
+	@Min(value = 5, message = "Debe haber al menos 5 cupos disponibles")
 	@Column(nullable = false)
 	private int cupos;
 	
-	@NotNull
+	@Size(min = 1, max = 255, message = "La descripcion no debe exceder los 255 caracteres")
 	@Column(nullable = false)
 	private String descripcion;
 	
+	@Lob
+	@Type(type = "org.hibernate.type.ImageType")
 	private byte[] imagen;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private Set<Estudiante> estudiantes;
 	
 	@Transient
-	@AssertTrue(message = "Campo 'fechaFin' debe ser una fecha posterior a 'fechaInicio'")
+	@AssertTrue(message = "La fecha de finalizacion debe ser superior a la fecha inicio")
 	private boolean isFechaFinMayorQueFechaInicio() {
-		return fechaFin.isAfter(fechaInicio);
+		if(fechaFin != null) {
+			return fechaFin.isAfter(fechaInicio);
+		}
+		return false;
 	}
 	
 }

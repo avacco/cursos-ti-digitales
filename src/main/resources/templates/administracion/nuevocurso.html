@@ -11,23 +11,32 @@
 		<h1 class="border-bottom pb-2 mb-0"> Formulario de Nuevo Curso</h1>
 		<div class="my-3 p-3 bg-body rounded shadow-sm">
 			<form data-th-action="@{/admin/nuevocurso}" data-th-object="${curso}" enctype="multipart/form-data" method="POST">
+				<div data-th-if="${#fields.hasErrors()}" class="alert alert-danger">
+					Revise los campos.
+				</div>
+				
 				<label class="form-label"> Nombre:</label> 
 					<input class="form-control" type="text" data-th-field="*{nombre}" />	
-					
+					 	<p  data-th-if="${#fields.hasErrors('nombre')}" data-th-class="${#fields.hasErrors('nombre')}? text-danger" data-th-errors="*{nombre}"></p>
+					 
 				<label class="form-label"> Fecha inicio: </label> 
 					<input class="form-control" type="date" data-th-field="*{fechaInicio}" />
+						<p  data-th-if="${#fields.hasErrors('fechaInicio')}" data-th-class="${#fields.hasErrors('fechaInicio')}? text-danger" data-th-errors="*{fechaInicio}"></p>
 					
 				<label class="form-label"> Fecha termino: </label> 
 					<input class="form-control" type="date" data-th-field="*{fechaFin}" />
+						<p  data-th-if="${#fields.hasErrors()}" data-th-class="text-danger" >Revise la fecha</p>
 				
 				<label class="form-label"> Cupos: </label> 
 					<input class="form-control" type="text" data-th-field="*{cupos}" />
+						<p  data-th-if="${#fields.hasErrors('cupos')}" data-th-class="${#fields.hasErrors('cupos')}? text-danger" data-th-errors="*{cupos}"></p>
 					
 				<label class="form-label">Imagen:</label>
 					<input class="form-control" type="file" id="image-file" name="image" accept="image/jpeg, image/png" />
 					
 				<label class="form-label"> Descripcion: </label> 
 					<textarea class="form-control" data-th-field="*{descripcion}" rows="10" cols="10"></textarea>
+						<p  data-th-if="${#fields.hasErrors('descripcion')}" data-th-class="${#fields.hasErrors('descripcion')}? text-danger" data-th-errors="*{descripcion}"></p>
 				
 					<br/>
 						

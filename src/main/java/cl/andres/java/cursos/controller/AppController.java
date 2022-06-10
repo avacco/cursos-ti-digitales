@@ -1,5 +1,6 @@
 package cl.andres.java.cursos.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +44,7 @@ public class AppController {
 	}
 	
 	@GetMapping("/imagen/{id}")
-	public ResponseEntity<byte[]> muestraImagenes(@PathVariable("id") Long id) throws SQLException {
+	public ResponseEntity<byte[]> muestraImagenes(@PathVariable("id") Long id) throws SQLException, IOException {
 		Optional<Curso> curso = cursoRepository.findById(id);
 		byte[] imageBytes = null;
 		if(curso.isPresent()) {

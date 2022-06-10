@@ -19,9 +19,13 @@
 				  <div class="card-body" align="center">
 				    <h2 class="card-title" data-th-text="${curso.nombre}"></h2>
 				    <p class="card-text" data-th-text="${curso.descripcion}"></p>
-				    <a class="btn btn-primary bg-gradient" data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-href="@{/estudiante/postular/{id}/{cursoId} (id=${#authentication.getPrincipal().getUsuario().getId()},cursoId=${curso.id})}">Postular</a>
-				    <a class="btn btn-primary bg-gradient" data-sec-authorize="!isAuthenticated()" data-th-href="@{/ingreso}">Postular</a>
-				    <a class="btn btn-primary bg-gradient" data-th-href="@{/producto/eliminar/{id}(id=${curso.id})}">Detalles</a>
+				    <p class="card-text" data-th-text="'Fecha de inicio: '+${curso.fechaInicio}"></p>
+				    <p class="card-text" data-th-text="'Fecha de termino: '+${curso.fechaFin}"></p>
+				    <p class="card-text" data-th-text="'Cupos disponibles: '+${curso.cupos}"></p>
+				    <a class="btn btn-primary bg-gradient" data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-if="${curso.cupos > 0}" data-th-href="@{/estudiante/postular/{id}/{cursoId} (id=${#authentication.getPrincipal().getUsuario().getId()},cursoId=${curso.id})}">Postular</a>
+				    <a class="btn btn-primary bg-gradient disabled" data-sec-authorize="hasAuthority('ESTUDIANTE')" data-th-if="${curso.cupos == 0}">Postular</a>
+				    <a class="btn btn-primary bg-gradient" data-sec-authorize="!isAuthenticated()" data-th-if="${curso.cupos > 0}" data-th-href="@{/ingreso}">Postular</a>
+				    <a class="btn btn-primary bg-gradient disabled" data-sec-authorize="!isAuthenticated()" data-th-if="${curso.cupos == 0}">Postular</a>
 				  </div>
 				</div><br/>
 			</div>

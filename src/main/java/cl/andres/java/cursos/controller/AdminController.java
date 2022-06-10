@@ -55,7 +55,7 @@ public class AdminController {
 		if (validacion.hasErrors()) return "administracion/nuevocurso";
 		
 		byte[] contenidoImagen = imagen.getBytes();
-		
+
 		if(curso.getId() == null) {
 			Curso agregarCurso = Curso.builder()
 										.nombre(curso.getNombre())

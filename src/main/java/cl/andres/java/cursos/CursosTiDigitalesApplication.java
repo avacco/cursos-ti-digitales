@@ -1,7 +1,5 @@
 package cl.andres.java.cursos;
 
-import java.io.File;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -65,7 +63,7 @@ public class CursosTiDigitalesApplication {
 										.imagen(Files.readAllBytes(Paths.get("src/main/resources/static/img/java.jpg")))
 										.build();
 				Curso cursoSpring = Curso.builder()
-										.nombre("Fundamentos de Programacion en Java")
+										.nombre("Desarrollo Web con Spring Framework")
 										.fechaInicio(LocalDate.of(2023, 3, 3))
 										.fechaFin(LocalDate.of(2023, 12, 20))
 										.cupos(30)
@@ -73,7 +71,7 @@ public class CursosTiDigitalesApplication {
 										.imagen(Files.readAllBytes(Paths.get("src/main/resources/static/img/spring.jpg")))
 										.build();
 				Curso cursoOracle = Curso.builder()
-										.nombre("Fundamentos de Programacion en Java")
+										.nombre("Bases de Datos Relacionales con Oracle")
 										.fechaInicio(LocalDate.of(2023, 3, 3))
 										.fechaFin(LocalDate.of(2023, 12, 20))
 										.cupos(30)

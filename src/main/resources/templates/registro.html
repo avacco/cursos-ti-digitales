@@ -10,42 +10,76 @@
 	<nav data-th-replace="parts/menu :: menu"></nav>
 
 	<main class="container"><br/>
-		<h1 class="border-bottom pb-2 mb-0"> Registro</h1>
+		<h1 class="border-bottom"> Registro</h1>
 		<div class="my-3 p-3 bg-body rounded shadow-sm">
 			<form data-th-action="@{/registro}" data-th-object="${estudiante}" enctype="multipart/form-data" method="POST">
-				<label class="form-label"> Primer Nombre:</label> 
-					<input class="form-control" type="text" data-th-field="*{nombre1}" />	
+				<div data-th-if="${#fields.hasErrors()}" class="alert alert-danger">
+					Revise los campos.
+				</div>
+				<div class="row">
+					<div class="col">
+						<label class="form-label"> Primer Nombre:</label> 
+							<input class="form-control" type="text" data-th-field="*{nombre1}" placeholder="Nombre"/>
+								<p  data-th-if="${#fields.hasErrors('nombre1')}" data-th-class="${#fields.hasErrors('nombre1')}? text-danger" data-th-errors="*{nombre1}"></p>
+					</div>	
+					<div class="col">					
+						<label class="form-label"> Segundo Nombre:</label> 
+							<input class="form-control" type="text" data-th-field="*{nombre2}" placeholder="Nombre"/>	
+							<p  data-th-if="${#fields.hasErrors('nombre2')}" data-th-class="${#fields.hasErrors('nombre2')}? text-danger" data-th-errors="*{nombre2}"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<label class="form-label"> Apellido Paterno:</label> 
+							<input class="form-control" type="text" data-th-field="*{apellidoPaterno}" placeholder="Apellido"/>
+							<p  data-th-if="${#fields.hasErrors('apellidoPaterno')}" data-th-class="${#fields.hasErrors('apellidoPaterno')}? text-danger" data-th-errors="*{apellidoPaterno}"></p>	
+					</div>
+					<div class="col">	
+						<label class="form-label"> Apellido Materno:</label> 
+							<input class="form-control" type="text" data-th-field="*{apellidoMaterno}" placeholder="Apellido" />
+							<p  data-th-if="${#fields.hasErrors('apellidoMaterno')}" data-th-class="${#fields.hasErrors('apellidoMaterno')}? text-danger" data-th-errors="*{apellidoMaterno}"></p>	
+					</div>
+				</div>
+				<div class="col-6">
+					<label class="form-label"> RUT:</label> 
+						<input class="form-control" type="text" data-th-field="*{rut}" placeholder="12345678-9"/>	
+						<p  data-th-if="${#fields.hasErrors('rut')}" data-th-class="${#fields.hasErrors('rut')}? text-danger" data-th-errors="*{rut}"></p>
+				</div>
+				<div class="col-6">
+					<label class="form-label"> Correo electronico:</label> 
+						<input class="form-control" type="text" data-th-field="*{email}" placeholder="correo@dominio.com"/>
+						<p  data-th-if="${#fields.hasErrors('email')}" data-th-class="${#fields.hasErrors('email')}? text-danger" data-th-errors="*{email}"></p>
+				</div>
+				<div class="col-6">
+					<label class="form-label"> Contraseña:</label> 
+						<input class="form-control" type="password" data-th-field="*{password}" />
+						<p  data-th-if="${#fields.hasErrors('password')}" data-th-class="${#fields.hasErrors('password')}? text-danger" data-th-errors="*{password}"></p>	
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<label class="form-label"> Telefono:</label> 
+							<input class="form-control" type="text" data-th-field="*{telefono}" placeholder="9 1234 5678"/>	
+							<p  data-th-if="${#fields.hasErrors('telefono')}" data-th-class="${#fields.hasErrors('telefono')}? text-danger" data-th-errors="*{telefono}"></p>
+					</div>
+					<div class="col-6">
+						<label class="form-label"> Direccion:</label> 
+							<input class="form-control" type="text" data-th-field="*{direccion}" placeholder="Calle 1 Nº321"/>
+							<p  data-th-if="${#fields.hasErrors('direccion')}" data-th-class="${#fields.hasErrors('direccion')}? text-danger" data-th-errors="*{direccion}"></p>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<label class="form-label"> Region:</label> 
+							<select id="regiones" class="form-select" data-th-field="*{region}"></select>
+								<div data-th-if="${#fields.hasErrors('region')}" class="text-danger">Region inválida.</div>
+					</div>
+					<div class="col-6">
+						<label class="form-label"> Comuna:</label> 
+							<select id="comunas" class="form-select" data-th-field="*{comuna}"></select>
+								<div data-th-if="${#fields.hasErrors('comuna')}" class="text-danger">Comuna inválida.</div>
 					
-				<label class="form-label"> Segundo Nombre:</label> 
-					<input class="form-control" type="text" data-th-field="*{nombre2}" />	
-					
-				<label class="form-label"> Apellido Paterno:</label> 
-					<input class="form-control" type="text" data-th-field="*{apellidoPaterno}" />	
-					
-				<label class="form-label"> Apellido Materno:</label> 
-					<input class="form-control" type="text" data-th-field="*{apellidoMaterno}" />	
-
-				<label class="form-label"> RUT:</label> 
-					<input class="form-control" type="text" data-th-field="*{rut}" />	
-
-				<label class="form-label"> Correo electronico:</label> 
-					<input class="form-control" type="text" data-th-field="*{email}" />	
-				
-				<label class="form-label"> Contraseña:</label> 
-					<input class="form-control" type="password" data-th-field="*{password}" />	
-				
-				<label class="form-label"> Telefono:</label> 
-					<input class="form-control" type="text" data-th-field="*{telefono}" />	
-
-				<label class="form-label"> Direccion:</label> 
-					<input class="form-control" type="text" data-th-field="*{direccion}" />	
-
-				<label class="form-label"> Region:</label> 
-					<select id="regiones" class="form-control" data-th-field="*{region}"></select>
-
-				<label class="form-label"> Comuna:</label> 
-					<select id="comunas" class="form-control" data-th-field="*{comuna}"></select>
-				
+					</div>
+				</div>
 					<br/>
 						
 				<input type="hidden" data-th-field="*{id}" />
