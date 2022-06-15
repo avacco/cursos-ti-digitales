@@ -26,7 +26,7 @@ public class Estudiante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Size(min = 9, max = 10, message = "El rut debe ser escrito en formato '12345678-9'")
 	@Column(nullable = false, unique = true, length = 10)
 	private String rut;
@@ -51,7 +51,7 @@ public class Estudiante {
 	@Column(nullable = false)
 	private String email;
 	
-	@Size(min = 6, message = "La contraseña debe tener un minimo de 6 caracteres")
+	@Size(min = 3, message = "La contraseña debe tener un minimo de 3 caracteres")
 	@Column(nullable = false)
 	private String password;
 	
