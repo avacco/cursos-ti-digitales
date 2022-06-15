@@ -27,7 +27,7 @@ public class Estudiante {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Size(min = 10, max = 10, message = "El rut debe ser escrito en formato '12345678-9'")
+	@Size(min = 9, max = 10, message = "El rut debe ser escrito en formato '12345678-9'")
 	@Column(nullable = false, unique = true, length = 10)
 	private String rut;
 	
